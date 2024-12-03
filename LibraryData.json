@@ -1,0 +1,48 @@
+{
+  "Books": [
+    {
+      "Id": "1",
+      "Title": "IkkysBook",
+      "Författare": "Princess",
+      "Isbn": "111",
+      "Genre": "Fantasy",
+      "Publiserinsår": 2000,
+      "Betyg": [ 5, 1, 2, 3, 4, 5 ]
+    },
+    {
+      "Id": "2",
+      "Title": "Harry Potter",
+      "Författare": "JK Rowling",
+      "Isbn": "222",
+      "Genre": "Comedy",
+      "Publiserinsår": 2003,
+      "Betyg": [ 5, 1, 2, 3, 4, 5 ]
+    },
+    {
+      "Id": "3",
+      "Title": "FunnyBook",
+      "Författare": "Zlatan",
+      "Isbn": "555",
+      "Genre": "Action",
+      "Publiserinsår": 1971,
+      "Betyg": [ 5, 1, 2, 3, 4, 5 ]
+    }
+  ],
+  "Författare": [
+    {
+      "Id": "1",
+      "Namn": "IkkysBook",
+      "Country": "Sverige"
+    },
+    {
+      "Id": "2",
+      "Namn": "Harry Potter",
+      "Country": "Grekland"
+    },
+    {
+      "Id": "3",
+      "Namn": "FunnyBook",
+      "Country": "Danmark"
+    }
+  ]
+}

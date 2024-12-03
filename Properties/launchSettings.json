@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "InlämningsUppgift 3": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
