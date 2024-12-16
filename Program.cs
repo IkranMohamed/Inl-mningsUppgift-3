@@ -5,19 +5,27 @@ namespace InlämningsUppgift_3
 {
     internal class Program
     {
+        private static object? db;
+
         static void Main(string[] args)
         {
-            
-           string dataJSONfilPath = Path.Combine(Directory.GetCurrentDirectory(), "LibraryData.json");
+
+            string dataJSONfilPath = Path.Combine(Directory.GetCurrentDirectory(), "LibraryData.json");
 
             try
             {
-                string allaTypeAvJson = File.ReadAllText(dataJSONfilPath);
-                DB db = JsonSerializer.Deserialize<DB>(allaTypeAvJson)!;
-                List<Book> allaBöcker = db.AllaBöckerFrånLista;
-                List<Författare> allaförfattare = db.AllaBöckersFrånFörfattareLista;
-
-                Console.WriteLine("Deserialisering lyckades!");
+                string jsonContent = File.ReadAllText(dataJSONfilPath);
+                DB db = JsonSerializer.Deserialize<DB>(jsonContent);
+                if (db != null)
+                {
+                    List<Book> allBooks = db.AllaBöckerFrånLista;
+                    List<Författare> allAuthors = db.AllaBöckersFrånFörfattareLista;
+                    Console.WriteLine("Deserialisering lyckades!");
+                }
+                else
+                {
+                    Console.WriteLine("Fel vid deserialisering: DB är null");
+                }
             }
             catch (JsonException jsonEx)
             {
@@ -28,22 +36,33 @@ namespace InlämningsUppgift_3
                 Console.WriteLine($"Ett fel uppstod: {ex.Message}");
             }
 
-            //string dataJSONfilPath = "LibraryData.json";
-            //string allaTypeAvJsonPath = File.ReadAllText(dataJSONfilPath);
-            //List<Book> books = new List<Book>();
-            // List<Book> allaBöcker = författare.AllaBöckerFrånLista;
-            //Författare författare = JsonSerializer.Deserialize<Författare>(allaTypeAvJsonPath)!;
-            //string uppdateraBook = JsonSerializer.Serialize(allaBöcker, new JsonSerializerOptions { WriteIndented = true });
+            Library library = new Library();
 
-            //List<Book> allaBöckerMedTitel = allaBöcker.Where(Book => Book.Publiserinsår == 1988).ToList();
+            while (true)
+            {
+                Console.WriteLine("Välj ett alternativ:");
+                Console.WriteLine("1. Lägg till bok");
+                Console.WriteLine("2. Lägg till betyg");
+                Console.WriteLine("3. Avsluta");
+                string choice = Console.ReadLine();
 
-            //List<Book> allaBöckerMedBetygÖver4iordning = allaBöckerMedTitel.OrderByDescending(Book => Book.Publiserinsår).ToList();
+                switch (choice)
+                {
+                    case "1":
+                        library.AddNewBook();
+                        break;
+                    case "2":
+                        // Handle rating logic
+                        break;
+                    case "3":
+                        Console.WriteLine("Programmet avslutas...");
+                        return;
+                    default:
+                        Console.WriteLine("Ogiltigt val, försök igen.");
+                        break;
+                }
 
-            // allaBöckerMedBetygÖver4iordning.ForEach(Book => { Console.WriteLine(Book.Publiserinsår); });
-            // allaBöcker.Add(new Book("1","IkkysBook", "Princess", "Fantasy", 1988, "111"));
-
-            //string uppdateraBook = JsonSerializer.Serialize(allaBöcker, new JsonSerializerOptions { WriteIndented = true });
-            //File.WriteAllText(dataJSONfilPath, uppdateraBook);
+            }
         }
     }
 }

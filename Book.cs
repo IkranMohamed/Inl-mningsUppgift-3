@@ -16,7 +16,7 @@ namespace InlämningsUppgift_3
 
         // Constructor
         
-        public Book() { }   
+        public Book(){ }   
 
         public Book(string id, string title, string författare, string isbn, string genre, int publiserinsår)
         {
@@ -43,6 +43,10 @@ namespace InlämningsUppgift_3
             // Lägg till betyget
             Betyg.Add(betygattläggatill);
             Console.WriteLine($"Betyget {betygattläggatill} har lagts till för boken '{Title}'!");
+
+            // Calculating average rating
+            double averageRating = Betyg.Average();
+            Console.WriteLine($"Genomsnittligt betyg för '{Title}' är {averageRating:F1}");
         }
     }
 }
