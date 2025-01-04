@@ -15,8 +15,8 @@ namespace InlämningsUppgift_3
         public List<int> Betyg { get; set; }
 
         // Constructor
-        
-        public Book(){ }   
+
+        public Book() { }
 
         public Book(string id, string title, string författare, string isbn, string genre, int publiserinsår)
         {
@@ -47,6 +47,11 @@ namespace InlämningsUppgift_3
             // Calculating average rating
             double averageRating = Betyg.Average();
             Console.WriteLine($"Genomsnittligt betyg för '{Title}' är {averageRating:F1}");
+        }
+
+        public double GetAverageRating()
+        {
+            return Betyg.Any() ? Betyg.Average() : 0;
         }
     }
 }
